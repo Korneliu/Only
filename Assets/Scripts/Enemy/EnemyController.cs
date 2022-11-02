@@ -20,16 +20,16 @@ public class EnemyController : MonoBehaviour
         timeBtwShots = startTimeBtwShots;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         float distToPlayer = Vector2.Distance(transform.position, player.position);
 
         if (distToPlayer < agroRange)
         {
-            //ChasePlayer();
-            transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            Vector2 target = transform.position + ((player.position - transform.position) * moveSpeed * Time.fixedTime);
+            rb.MovePosition(target);
         }
-       
+
 
         if (timeBtwShots <= 0)
         {

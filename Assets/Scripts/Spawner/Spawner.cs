@@ -4,22 +4,28 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
-    [SerializeField] private Transform spawnPos;
+    [SerializeField] private Transform[] spawnPos;
+    [SerializeField] private float _delay = 3F;
+    private Transform _player;
 
-    private void Start()
+    private void Awake()
     {
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(SpawnCD());
     }
 
-    void Repeat()
-    {
-        StartCoroutine(SpawnCD());
-    }
 
-    IEnumerator SpawnCD()
+    private IEnumerator SpawnCD()
     {
-        yield return new WaitForSeconds(3f);
-        Instantiate(enemy, spawnPos.position, Quaternion.identity);
-        //Repeat();
+        while (true)
+        {
+            foreach (var spawnPo in spawnPos)
+            {
+                var position = new Vector3(spawnPo.position.x, spawnPo.position.y, _player.position.z);
+                Instantiate(enemy, position, Quaternion.identity);
+            }
+
+            yield return new WaitForSeconds(_delay);
+        }
     }
 }
