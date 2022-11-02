@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
 
         if (distToPlayer < agroRange)
         {
-            Vector2 target = transform.position + ((player.position - transform.position) * moveSpeed * Time.fixedTime);
+            Vector2 target = transform.position + ((player.position - transform.position) * moveSpeed * Time.fixedDeltaTime);
             rb.MovePosition(target);
         }
 

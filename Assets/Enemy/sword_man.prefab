@@ -242,7 +242,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -289,7 +289,7 @@ MonoBehaviour:
   health: 1
   player: {fileID: 5140848886318966825, guid: 5e1ab4f883eb7774a80f615e2dcbbbff, type: 3}
   agroRange: 2000
-  moveSpeed: 0.001
+  moveSpeed: 0.1
   rb: {fileID: -8240537460963570912}
   startTimeBtwShots: 0
 --- !u!1 &1315759352830414
